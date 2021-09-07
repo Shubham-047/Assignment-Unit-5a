@@ -1,0 +1,25 @@
+{    
+    "users":[
+    {
+      "id": 1001,
+      "first_name": "Shubham",
+      "last_name": "Kumar",
+      "email": "shu@gmail.com",
+      "gender": "male",
+      "ip_address": "164.215.194.36",
+      "age": 20
+    },
+    {
+      "id": 1002,
+      "first_name": "Shub",
+      "last_name": "Kumar",
+      "email": "shubh@gmail.com",
+      "gender": "male",
+      "ip_address": "164.215.194.36",
+      "age": 22
+    }
+
+]
+  
+  }
+  

@@ -1,0 +1,257 @@
+Microsoft Windows [Version 10.0.17133.73]
+(c) 2018 Microsoft Corporation. All rights reserved.
+
+C:\Users\Shubham>mongo
+MongoDB shell version v5.0.2
+connecting to: mongodb://127.0.0.1:27017/?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("eee095ff-b0c2-4be2-a577-9c4df3ab39bd") }
+MongoDB server version: 5.0.2
+================
+Warning: the "mongo" shell has been superseded by "mongosh",
+which delivers improved usability and compatibility.The "mongo" shell has been deprecated and will be removed in
+an upcoming release.
+We recommend you begin using "mongosh".
+For installation instructions, see
+https://docs.mongodb.com/mongodb-shell/install/
+================
+---
+The server generated these startup warnings when booting:
+        2021-09-07T10:41:02.244+05:30: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+---
+---
+        Enable MongoDB's free cloud-based monitoring service, which will then receive and display
+        metrics about your deployment (disk utilization, CPU, operation statistics, etc).
+
+        The monitoring data will be available on a MongoDB website with a unique URL accessible to you
+        and anyone you share the URL with. MongoDB may use this information to make product
+        improvements and to suggest MongoDB products and deployment options to you.
+
+        To enable free monitoring, run the following command: db.enableFreeMonitoring()
+        To permanently disable this reminder, run the following command: db.disableFreeMonitoring()
+---
+> show databases
+admin        0.000GB
+assignments  0.000GB
+config       0.000GB
+local        0.000GB
+test         0.000GB
+> use assignments
+switched to db assignments
+> db.find()
+uncaught exception: TypeError: db.find is not a function :
+@(shell):1:1
+> db.find().pretty()
+uncaught exception: TypeError: db.find is not a function :
+@(shell):1:1
+> show databases
+admin        0.000GB
+assignments  0.000GB
+config       0.000GB
+local        0.000GB
+test         0.000GB
+> use assignment
+switched to db assignment
+> db.createCollection("user")
+{ "ok" : 1 }
+> show collection
+uncaught exception: Error: don't know how to show [collection] :
+shellHelper.show@src/mongo/shell/utils.js:1211:11
+shellHelper@src/mongo/shell/utils.js:838:15
+@(shellhelp2):1:1
+> show collections
+user
+> db.user.insert({f_name:"abc" , l_name: "abc" , email:"a@gmail" ,gender: "m" ,ip:"1234" , age:"21"})
+WriteResult({ "nInserted" : 1 })
+> db.user.insert({f_name:"cde" , l_name: "gfh" , email:"b@gmail" ,gender: "m" ,ip:"1256" , age:"22"})
+WriteResult({ "nInserted" : 1 })
+> db.user.insertMany([{f_name: "a" , l_name: "b" ,email: "s@gmail" , gen: "m" , ip: 8900, age: 10},{f_name: "b" , l_name: "c" ,email: "b@gmail" , gen: "m" , ip: 0000, age: 20},{f_name: "c" , l_name: "c" ,email: "c@gmail" , gen: "f" , ip: 8000, age: 17}, {f_name: "d" , l_name: "d" ,email: "d@gmail" , gen: "f" , ip: 0900, age: 19},{ f_name: "e" , l_name: "e" ,email: "e@gmail" , gen: "m" , ip: 7900, age: 34},{f_name: "f" , l_name: "f" ,email: "f@gmail" , gen: "m" , ip: 9900, age: 32}])
+{
+        "acknowledged" : true,
+        "insertedIds" : [
+                ObjectId("61377e36648ba95b51e50635"),
+                ObjectId("61377e36648ba95b51e50636"),
+                ObjectId("61377e36648ba95b51e50637"),
+                ObjectId("61377e36648ba95b51e50638"),
+                ObjectId("61377e36648ba95b51e50639"),
+                ObjectId("61377e36648ba95b51e5063a")
+        ]
+}
+> db.find().pretty()
+uncaught exception: TypeError: db.find is not a function :
+@(shell):1:1
+> db.user.find().pretty()
+{
+        "_id" : ObjectId("61377ba7648ba95b51e50633"),
+        "f_name" : "abc",
+        "l_name" : "abc",
+        "email" : "a@gmail",
+        "gender" : "m",
+        "ip" : "1234",
+        "age" : "21"
+}
+{
+        "_id" : ObjectId("61377bde648ba95b51e50634"),
+        "f_name" : "cde",
+        "l_name" : "gfh",
+        "email" : "b@gmail",
+        "gender" : "m",
+        "ip" : "1256",
+        "age" : "22"
+}
+{
+        "_id" : ObjectId("61377e36648ba95b51e50635"),
+        "f_name" : "a",
+        "l_name" : "b",
+        "email" : "s@gmail",
+        "gen" : "m",
+        "ip" : 8900,
+        "age" : 10
+}
+{
+        "_id" : ObjectId("61377e36648ba95b51e50636"),
+        "f_name" : "b",
+        "l_name" : "c",
+        "email" : "b@gmail",
+        "gen" : "m",
+        "ip" : 0,
+        "age" : 20
+}
+{
+        "_id" : ObjectId("61377e36648ba95b51e50637"),
+        "f_name" : "c",
+        "l_name" : "c",
+        "email" : "c@gmail",
+        "gen" : "f",
+        "ip" : 8000,
+        "age" : 17
+}
+{
+        "_id" : ObjectId("61377e36648ba95b51e50638"),
+        "f_name" : "d",
+        "l_name" : "d",
+        "email" : "d@gmail",
+        "gen" : "f",
+        "ip" : 900,
+        "age" : 19
+}
+{
+        "_id" : ObjectId("61377e36648ba95b51e50639"),
+        "f_name" : "e",
+        "l_name" : "e",
+        "email" : "e@gmail",
+        "gen" : "m",
+        "ip" : 7900,
+        "age" : 34
+}
+{
+        "_id" : ObjectId("61377e36648ba95b51e5063a"),
+        "f_name" : "f",
+        "l_name" : "f",
+        "email" : "f@gmail",
+        "gen" : "m",
+        "ip" : 9900,
+        "age" : 32
+}
+> db.user.findOne({"_id" : ObjectId("61377e36648ba95b51e5063a"})
+... ^C
+
+> db.user.findOne({"_id" : ObjectId("61377e36648ba95b51e5063a")})
+{
+        "_id" : ObjectId("61377e36648ba95b51e5063a"),
+        "f_name" : "f",
+        "l_name" : "f",
+        "email" : "f@gmail",
+        "gen" : "m",
+        "ip" : 9900,
+        "age" : 32
+}
+> db.user.update({"_id" : ObjectId("61377e36648ba95b51e5063a")}, {$set: {l_name: "Kumar"}})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+> db.user.findOne({"_id" : ObjectId("61377e36648ba95b51e5063a")})
+{
+        "_id" : ObjectId("61377e36648ba95b51e5063a"),
+        "f_name" : "f",
+        "l_name" : "Kumar",
+        "email" : "f@gmail",
+        "gen" : "m",
+        "ip" : 9900,
+        "age" : 32
+}
+> db.user.updateMany({gen: "f"} , {$set: {gen: "m"}})
+{ "acknowledged" : true, "matchedCount" : 2, "modifiedCount" : 2 }
+> db.user.remove({"_id" : ObjectId("61377e36648ba95b51e5063a")})
+WriteResult({ "nRemoved" : 1 })
+> db.user.find().pretty()
+{
+        "_id" : ObjectId("61377ba7648ba95b51e50633"),
+        "f_name" : "abc",
+        "l_name" : "abc",
+        "email" : "a@gmail",
+        "gender" : "m",
+        "ip" : "1234",
+        "age" : "21"
+}
+{
+        "_id" : ObjectId("61377bde648ba95b51e50634"),
+        "f_name" : "cde",
+        "l_name" : "gfh",
+        "email" : "b@gmail",
+        "gender" : "m",
+        "ip" : "1256",
+        "age" : "22"
+}
+{
+        "_id" : ObjectId("61377e36648ba95b51e50635"),
+        "f_name" : "a",
+        "l_name" : "b",
+        "email" : "s@gmail",
+        "gen" : "m",
+        "ip" : 8900,
+        "age" : 10
+}
+{
+        "_id" : ObjectId("61377e36648ba95b51e50636"),
+        "f_name" : "b",
+        "l_name" : "c",
+        "email" : "b@gmail",
+        "gen" : "m",
+        "ip" : 0,
+        "age" : 20
+}
+{
+        "_id" : ObjectId("61377e36648ba95b51e50637"),
+        "f_name" : "c",
+        "l_name" : "c",
+        "email" : "c@gmail",
+        "gen" : "m",
+        "ip" : 8000,
+        "age" : 17
+}
+{
+        "_id" : ObjectId("61377e36648ba95b51e50638"),
+        "f_name" : "d",
+        "l_name" : "d",
+        "email" : "d@gmail",
+        "gen" : "m",
+        "ip" : 900,
+        "age" : 19
+}
+{
+        "_id" : ObjectId("61377e36648ba95b51e50639"),
+        "f_name" : "e",
+        "l_name" : "e",
+        "email" : "e@gmail",
+        "gen" : "m",
+        "ip" : 7900,
+        "age" : 34
+}
+> db.user.deleteOne({"_id" : ObjectId("61377e36648ba95b51e50639")})
+{ "acknowledged" : true, "deletedCount" : 1 }
+> db.user.deleteMany({gen: "m"})
+{ "acknowledged" : true, "deletedCount" : 4 }
+> db.user.find()
+{ "_id" : ObjectId("61377ba7648ba95b51e50633"), "f_name" : "abc", "l_name" : "abc", "email" : "a@gmail", "gender" : "m", "ip" : "1234", "age" : "21" }
+{ "_id" : ObjectId("61377bde648ba95b51e50634"), "f_name" : "cde", "l_name" : "gfh", "email" : "b@gmail", "gender" : "m", "ip" : "1256", "age" : "22" }
+> db.dropDatabase()
+{ "ok" : 1 }
+>
