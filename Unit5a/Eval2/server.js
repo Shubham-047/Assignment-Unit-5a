@@ -3,7 +3,13 @@ const express = require("express")
 const mongoose = require("mongoose")
 
 const connect = () => {
-    return mongoose.connect(" mongodb://127.0.0.1:27017/masai");
+    return mongoose.connect(" mongodb://127.0.0.1:27017/masai", {
+        useCreateIndex: true,
+        useFindAndModify: false,
+        useNewUrlParser: true,
+        useUnifiedTopology:true
+        
+    });
 }
 
 
@@ -26,12 +32,26 @@ const User = mongoose.model("user", userSchema)
 
 
 const app = express();
+app.use(express.json())
 
 //for getting all users
-app.get("user", async(req, res) => {
+app.get("/users", async(req, res) => {
     
     //console.log(users)
-    const user = await User.find().lean().exec()
+   
+        const user = await User.find().lean().exec()
+        //return res.status(200).json({ user });
+    res.send(user)
+   
+})
+
+app.post("/users", async (req, res) => {
+    const user = await User.create(req.body);
+    return res.status(201).json({ user });
+})
+
+app.get("/users" ,async (req, res) => {
+    const user = await User.find({ age: { $gt: 18 } }).lean().exec();
     res.send(user)
 })
 
