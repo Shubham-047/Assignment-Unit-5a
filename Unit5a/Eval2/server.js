@@ -55,12 +55,17 @@ app.get("/users" ,async (req, res) => {
     res.send(user)
 })
 
+app.get("/users", async (req, res) => {
+     const user = await User.find({ course: { $eq: "Full-Stack" } }).lean().exec();
+    res.send(user)
+})
+
 
 
 
 
 
 app.listen(3045, async function() {
-    await mongoose.connect();
+    await connect();
     console.log("listening to port 3045")
 })
