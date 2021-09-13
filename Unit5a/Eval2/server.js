@@ -50,18 +50,43 @@ app.post("/users", async (req, res) => {
     return res.status(201).json({ user });
 })
 
-app.get("/users" ,async (req, res) => {
+app.get("/users/age" ,async (req, res) => {
     const user = await User.find({ age: { $gt: 18 } }).lean().exec();
-    res.send(user)
+    return res.status(200).json({ user });
 })
 
-app.get("/users", async (req, res) => {
+app.get("/users/course", async (req, res) => {
      const user = await User.find({ course: { $eq: "Full-Stack" } }).lean().exec();
-    res.send(user)
+     return res.status(200).json({ user });
 })
 
 
+app.get("/users/gender/male", async (req, res) => {
+     const user = await User.find({ gender: { $eq: "male" } }).count().lean().exec();
+     return res.status(200).json({ user });
+})
 
+
+app.get("/users/gender/female", async (req, res) => {
+     const user = await User.find({ gender: { $eq: "female" } }).count().lean().exec();
+     return res.status(200).json({ user });
+})
+
+app.get("/users/count", async (req, res) => {
+     const user = await User.find().count().lean().exec();
+     return res.status(200).json({ user });
+})
+
+app.patch("/users/:id" ,async (req, res) => {
+    const user = await User.findByIdAndUpdate(req.params.id,req.body,{new:true});
+     return res.status(200).json({ user });
+})
+
+
+app.delete("/users/:id" ,async (req, res) => {
+    const user = await User.findByIdAndDelete(req.params.id);
+     return res.status(200).json({ user });
+})
 
 
 
