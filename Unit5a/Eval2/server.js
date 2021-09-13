@@ -89,6 +89,12 @@ app.get("/users/count", async (req, res) => {
 })
 
 
+//to get user taught by aman
+app.get("/users/aman", async (req, res) => {
+     const user = await User.find({ teacher: { $eq: "aman" } }).count().lean().exec();
+     return res.status(200).json({ user });
+})
+
 //to update the data
 app.patch("/users/:id" ,async (req, res) => {
     const user = await User.findByIdAndUpdate(req.params.id,req.body,{new:true});
