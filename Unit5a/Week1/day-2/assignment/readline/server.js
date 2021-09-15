@@ -39,7 +39,7 @@ const booksFun = () => {
         books.map((el) => {
           console.log(`${el.id}.${el.name}`);
         });
-        //myBooks.close();
+      
         booksFun();
       }
       else if (ans == 2) {
