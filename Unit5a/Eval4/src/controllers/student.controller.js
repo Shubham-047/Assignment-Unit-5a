@@ -10,10 +10,14 @@ router.post("/",  async (req, res) => {
         roll_number: req.body.roll_number,
       
     })
-    return res.status(201).json({data: user})
+    return res.status(201).json({data: student})
 
 })
+router.get("/", upload.single("profile_pic"), async (req, res) => {
+    
+    return res.status(200).json({students})
 
+})
 // router.post("/")
 
 module.exports = router;

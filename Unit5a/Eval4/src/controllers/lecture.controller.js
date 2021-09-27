@@ -14,6 +14,11 @@ router.post("/",  async (req, res) => {
     return res.status(201).json({data: lecture})
 
 })
+router.get("/",  async (req, res) => {
+  
+    return res.status(200).json({lecture})
+
+})
 
 // router.post("/")
 

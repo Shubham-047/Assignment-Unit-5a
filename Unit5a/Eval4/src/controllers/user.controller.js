@@ -17,6 +17,11 @@ router.post("/single", upload.single("profile_pic"), async (req, res) => {
     return res.status(201).json({data: user})
 
 })
+router.get("/single", upload.single("profile_pic"), async (req, res) => {
+    
+    return res.status(200).json({user})
+
+})
 
 // router.post("/")
 
