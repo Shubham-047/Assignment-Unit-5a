@@ -13,7 +13,7 @@ router.post("/",  async (req, res) => {
     return res.status(201).json({data: student})
 
 })
-router.get("/", upload.single("profile_pic"), async (req, res) => {
+router.get("/", async (req, res) => {
     const student = await Students.find().lean().exec()
     return res.status(200).json({student})
 

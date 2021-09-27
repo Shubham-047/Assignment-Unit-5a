@@ -17,7 +17,7 @@ router.post("/single", upload.single("profile_pic"), async (req, res) => {
     return res.status(201).json({data: user})
 
 })
-router.get("/single", upload.single("profile_pic"), async (req, res) => {
+router.get("/single", async (req, res) => {
     const user = await User.find().lean().exec()
     return res.status(200).json({user})
 

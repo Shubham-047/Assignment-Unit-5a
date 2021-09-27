@@ -25,6 +25,12 @@ router.patch("/lecture/:id", async (req, res) => {
 
 })
 
+router.delete("/lecture/:id", async (req, res) => {
+    const lecture = await Lecture.findByIdAndDelete().lean().exec()
+    return res.status(200).json({lecture})
+
+})
+
 // router.post("/")
 
 module.exports = router;
