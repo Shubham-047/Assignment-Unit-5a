@@ -2,7 +2,7 @@ const express = require("express");
 
 const router = express.Router();
 const User = require("../model/user.model");
-const { single } = require("../utils/file_uploads");
+// const { single } = require("../utils/file_uploads");
 const upload = require("../utils/file_uploads")
 
 router.post("/single", upload.single("profile_pic"), async (req, res) => {
