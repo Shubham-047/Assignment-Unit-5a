@@ -15,7 +15,12 @@ router.post("/",  async (req, res) => {
 
 })
 router.get("/",  async (req, res) => {
-  
+  const lecture = await Lecture.find().lean().exec()
+    return res.status(200).json({lecture})
+
+})
+router.patch("/lecture/:id", async (req, res) => {
+    const lecture = await Lecture.findByIdAndUpdate().lean().exec()
     return res.status(200).json({lecture})
 
 })
